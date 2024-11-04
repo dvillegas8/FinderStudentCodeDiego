@@ -27,14 +27,15 @@ public class Finder {
     private String[] hashMap = new String[size];
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
         // TODO: Complete the buildTable() function!
+        String line = "";
         pairs = new keyValuePairs[size];
         // For every line in cvs file
-        String line = "";
         String[] parts;
         // Array which holds the keys
         long hash = 0L;
         int i = 1;
         while((line = br.readLine()) != null){
+
             /*
             parts = line.split(",");
             pairs[i] = new keyValuePairs(parts[keyCol], parts[valCol], hash(parts[keyCol], parts[keyCol].length(), 0));
