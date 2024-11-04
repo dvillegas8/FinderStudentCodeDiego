@@ -1,4 +1,4 @@
-public class HashMap {
+public class CustomHashMap {
     private static final int DEFAULT_TABLE_SIZE = 16;
     // number of key-value pairs in the table
     private int n;
@@ -6,7 +6,7 @@ public class HashMap {
     private int tableSize;
     private String[] keys;
     private String[] values;
-    public HashMap(){
+    public CustomHashMap(){
         this.tableSize = DEFAULT_TABLE_SIZE;
         keys = new String[tableSize];
         values = new String[tableSize];
