@@ -35,7 +35,7 @@ public class CustomHashMap {
             // Linear probing
             while(keys[keyHash] != null){
                 // Wrap around the array if keyHash/index is greater than array length
-                if(keyHash >= keys.length){
+                if(keyHash >= keys.length -1){
                     keyHash = 0;
                 }
                 else{
@@ -47,7 +47,8 @@ public class CustomHashMap {
         keys[keyHash] = key;
         values[keyHash] = value;
         // Check if resize is needed/load factor is greater or equal to 1/2
-        if((double) n / tableSize >= 0.5){
+        double loadfactor = (double) n / tableSize;
+        if(loadfactor >= 0.5){
             resize();
         }
     }
@@ -55,9 +56,9 @@ public class CustomHashMap {
         int keyHash = hash(key);
         if(!keys[keyHash].equals(key)){
             // Continue checking to the right until we find the correct key
-            while(!keys[keyHash].equals(key)){
+            while(keys[keyHash] == null || !keys[keyHash].equals(key)){
                 // Wrap around the around if keyHash is too big
-                if(keyHash >= keys.length){
+                if(keyHash >= keys.length - 1){
                     keyHash = 0;
                 }
                 else{
@@ -73,7 +74,7 @@ public class CustomHashMap {
             // Linear probing
             while(keys[keyHash] != null){
                 // Wrap around the array if keyHash/index is greater than array length
-                if(keyHash >= keys.length){
+                if(keyHash >= keys.length - 1){
                     keyHash = 0;
                 }
                 else{
