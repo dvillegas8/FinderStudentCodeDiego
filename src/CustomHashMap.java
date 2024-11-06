@@ -1,5 +1,5 @@
 public class CustomHashMap {
-    private static final int DEFAULT_TABLE_SIZE = 16;
+    private static final int DEFAULT_TABLE_SIZE = 50000;
     // number of key-value pairs in the table
     private int n;
     // size of linear-probing table
@@ -54,7 +54,10 @@ public class CustomHashMap {
     }
     public String getValue(String key){
         int keyHash = hash(key);
-        if(!keys[keyHash].equals(key)){
+        if(keys[keyHash] == null){
+            return "INVALID KEY";
+        }
+        else if(!keys[keyHash].equals(key) ){
             // Continue checking to the right until we find the correct key
             while(keys[keyHash] == null || !keys[keyHash].equals(key)){
                 // Wrap around the around if keyHash is too big
