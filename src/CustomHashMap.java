@@ -1,8 +1,8 @@
 public class CustomHashMap {
-    private static final int DEFAULT_TABLE_SIZE = 50000;
+    private static final String INVALID = "INVALID KEY";
+    private static final int DEFAULT_TABLE_SIZE = 4500;
     // number of key-value pairs in the table
     private int n;
-    // size of linear-probing table
     private int tableSize;
     private String[] keys;
     private String[] values;
@@ -31,8 +31,9 @@ public class CustomHashMap {
     }
     public void put(String key, String value){
         int keyHash = hash(key);
+        // Check if a collision occurs
         if(keys[keyHash] != null){
-            // Linear probing
+            // Linear probing, continue checking until empty index
             while(keys[keyHash] != null){
                 // Wrap around the array if keyHash/index is greater than array length
                 if(keyHash >= keys.length -1){
@@ -54,9 +55,11 @@ public class CustomHashMap {
     }
     public String getValue(String key){
         int keyHash = hash(key);
+        // Check if index
         if(keys[keyHash] == null){
             return "INVALID KEY";
         }
+        // Check if keys match
         else if(!keys[keyHash].equals(key) ){
             // Continue checking to the right until we find the correct key
             while(keys[keyHash] == null || !keys[keyHash].equals(key)){
@@ -71,10 +74,12 @@ public class CustomHashMap {
         }
         return values[keyHash];
     }
+    // Method for resize, same as put but don't do checks on load factor since it is unnecessary
     public void rehash(String key, String value){
         int keyHash = hash(key);
+        // Check if a collision occurs
         if(keys[keyHash] != null){
-            // Linear probing
+            // Linear probing, continue checking until empty index
             while(keys[keyHash] != null){
                 // Wrap around the array if keyHash/index is greater than array length
                 if(keyHash >= keys.length - 1){

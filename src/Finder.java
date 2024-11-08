@@ -13,21 +13,8 @@ import java.util.HashMap;
 
 public class Finder {
 
-    private static final String INVALID = "INVALID KEY";
-    // Prime number
-    private static long P = 811L;
-    // Base of 122 because it is y + 1, y is the lowest character in the elements csv file
-    private static int R = 'y' + 1;
-    // size of the arrays
-    private static final int size = (int) P;
-    public Finder() {}
-    private String[] keys = new String[size];
-    private String[] values = new String[size];
-    private keyValuePairs[] pairs;
-    //private String[] hashMap = new String[size];
     private CustomHashMap table;
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
-        // TODO: Complete the buildTable() function!
         table = new CustomHashMap();
         String line = "";
         String[] parts;
@@ -42,7 +29,6 @@ public class Finder {
     }
 
     public String query(String key){
-        // TODO: Complete the query() function!
         return table.getValue(key);
     }
 }
