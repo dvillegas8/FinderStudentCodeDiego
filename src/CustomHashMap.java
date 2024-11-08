@@ -57,7 +57,7 @@ public class CustomHashMap {
         int keyHash = hash(key);
         // Check if index
         if(keys[keyHash] == null){
-            return "INVALID KEY";
+            return INVALID;
         }
         // Check if keys match
         else if(!keys[keyHash].equals(key) ){

@@ -12,7 +12,6 @@ import java.util.HashMap;
  **/
 
 public class Finder {
-
     private CustomHashMap table;
     public void buildTable(BufferedReader br, int keyCol, int valCol) throws IOException {
         table = new CustomHashMap();
